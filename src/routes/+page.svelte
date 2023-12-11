@@ -4,6 +4,13 @@
 	import welcome_fallback from '$lib/images/svelte-welcome.png';
 	import { readRecipes } from '$lib/helpers';
 	readRecipes();
+
+	const tokenize = async () => {
+		const recipesMD = readRecipes();
+		const recipes = recipesMD.map(() => {
+
+		})
+	}
 </script>
 
 <svelte:head>
