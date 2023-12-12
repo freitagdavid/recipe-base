@@ -1,3 +1,4 @@
+// @ts-ignore
 import markdownJson from 'markdown-json'
 import "../../app/globals.css"
 import RecipeCard from "@/components/RecipeCard";
@@ -10,6 +11,7 @@ export interface Recipe {
     ingredients: string[],
     directions: string[],
     description: string,
+    id: string,
 }
 
 export const getStaticProps = async () => {
@@ -21,7 +23,6 @@ export const getStaticProps = async () => {
     });
     const recipes = Object.keys(files).map(key => {
         let file = files[key];
-        console.log(file)
         return {
             layout: file.layout || '',
             title: file.title || '',
@@ -30,6 +31,7 @@ export const getStaticProps = async () => {
             ingredients: file.ingredients || [],
             directions: file.directions || [],
             description: file.excerpt.text || '',
+            id: file.title.replace(/\s+/g, '-').toLowerCase(),
         }
     })
     return {
@@ -37,9 +39,9 @@ export const getStaticProps = async () => {
     }
 }
 
-export default function Home({ recipes }) {
+export default function Home({ recipes }: { recipes: Recipe[] }) {
     return (
-        <div className='flex flex-wrap gap-5 justify-center bg-white' >
+        <div className='flex flex-wrap gap-5 justify-center bg-white px-12' >
             {
                 recipes.map(recipe => {
                     return <RecipeCard recipe={recipe} key={recipe.title} />
