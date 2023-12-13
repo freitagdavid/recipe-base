@@ -62,7 +62,13 @@ export const getStaticPaths = async () => {
 
 const Ingredient = ({ key, ingredient }) => {
     return (
-        <li className="border border-solid border-gray-400 p-2">{ingredient}</li>
+        <li className="border border-solid pl-2 py-2">{ingredient}</li>
+    );
+};
+
+const Direction = ({ key, direction }) => {
+    return (
+        <li className="border border-solid border-gray-400 pl-2 py-2">{direction}</li>
     );
 };
 
@@ -79,10 +85,21 @@ const RecipePage = ({ recipe }: { recipe: Recipe }) => {
                 <Image src={`/images/${recipe.image}`} alt={recipe.title} fill={true} className='aspect-auto object-cover' />
             </div>
             <h1 className='text-4xl font-medium w-full text-center' style={{ gridArea: 'title' }}>{recipe.title}</h1>
-            <div className="ingredients" style={{ gridArea: 'ingredients' }}>{recipe.ingredients.map((ingredient) => {
-                return <Ingredient key={ingredient} ingredient={ingredient} />;
-            })}</div>
-            <div style={{ gridArea: 'directions' }}>{recipe.directions}</div>
+            <div className="ingredients" style={{ gridArea: 'ingredients' }}>
+                <h2>Ingredients: </h2>
+                <ul>
+                    {recipe.ingredients.map((ingredient) => {
+                        return <Ingredient key={ingredient} ingredient={ingredient} />;
+                    })}
+                </ul>
+            </div>
+            <div style={{ gridArea: 'directions' }}>
+                <ol>
+                    {recipe.directions.map((direction) => {
+                        return <Direction key={direction} direction={direction} />;
+                    })}
+                </ol>
+            </div>
             <p style={{ gridArea: 'description' }}>{recipe.description}</p>
         </div>
     );
