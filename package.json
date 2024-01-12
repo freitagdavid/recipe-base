@@ -9,6 +9,7 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@iconscout/react-unicons": "^2.0.2",
         "axios": "^1.6.2",
         "markdown-json": "github:freitagdavid/markdown-json",
         "next": "14.0.4",

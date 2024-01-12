@@ -12,6 +12,23 @@ export interface Recipe {
     directions: string[],
     description: string,
     id: string,
+    prepTime?: string,
+    difficulty?: string,
+    rating?: number,
+    servings?: number,
+    dietType?: string[],
+    nutrition?: {
+        calories?: number,
+        fat?: number,
+        protein?: number,
+        carbs?: {
+            total?: number,
+            fiber?: number,
+            sugar?: number,
+            net?: number,
+        },
+    },
+    tip?: string,
 }
 
 export const getStaticProps = async () => {
@@ -41,7 +58,7 @@ export const getStaticProps = async () => {
 
 export default function Home({ recipes }: { recipes: Recipe[] }) {
     return (
-        <div className='flex flex-wrap gap-5 justify-center bg-white px-12' >
+        <div className='flex flex-wrap gap-5 justify-center bg-white px-12 py-12' >
             {
                 recipes.map(recipe => {
                     return <RecipeCard recipe={recipe} key={recipe.title} />
@@ -50,6 +67,3 @@ export default function Home({ recipes }: { recipes: Recipe[] }) {
         </div >
     )
 }
-
-
-href
