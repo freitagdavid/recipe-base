@@ -1,11 +1,11 @@
-import { Recipe } from "@/pages/Home";
+import {Recipe} from "@/pages/Home";
 import "../../app/globals.css";
 import Image from "next/image";
 // @ts-ignore
-import { UilClock, UilStar } from "@iconscout/react-unicons";
+import {UilClock, UilStar} from "@iconscout/react-unicons";
 // @ts-ignore
 import markdownJson from "markdown-json";
-import { useState } from "react";
+import {useState} from "react";
 
 export const getStaticProps = async (props: { params: { title: string } }) => {
     const files = await markdownJson({
@@ -33,7 +33,7 @@ export const getStaticProps = async (props: { params: { title: string } }) => {
         }
     });
     return {
-        props: { recipe: out },
+        props: {recipe: out},
     };
 };
 
@@ -98,26 +98,27 @@ export const getStaticPaths = async () => {
     });
     return {
         paths: recipes.map((recipe) => {
-            return { params: { title: recipe.id } };
+            return {params: {title: recipe.id}};
         }),
         fallback: false,
     };
 };
 
-const Ingredient = ({ key, ingredient }: { key: string; ingredient: string; }) => {
+const Ingredient = ({key, ingredient, index}: { key: string; ingredient: string; index: number; }) => {
     return (
         <div className="flex border boder-black border-solid">
-            <input type="checkbox" className="ml-8 mr-1" />
+            <input type="checkbox" className="ml-8 mr-1"/>
             <li>{ingredient}</li>
         </div>
     );
 };
 
-const Direction = ({ key, direction, index }: { key: string; direction: string; index: number; }) => {
+const Direction = ({key, direction, index}: { key: string; direction: string; index: number; }) => {
     return (
         <li className="pl-2 py-2 flex align-middle h-16">
             <div className="h-full flex flex-col justify-center pr-3">
-                <div className='mr-2 bg-slate-600 p-2 text-white rounded-full w-8 h-8 flex flex-col justify-center text-center'>{index + 1}</div>
+                <div
+                    className='mr-2 bg-slate-600 p-2 text-white rounded-full w-8 h-8 flex flex-col justify-center text-center'>{index + 1}</div>
             </div>
             <div className="h-full flex flex-col justify-center">
                 {direction}
@@ -127,18 +128,19 @@ const Direction = ({ key, direction, index }: { key: string; direction: string; 
 };
 
 const DurationDifficulty = ({
-    duration,
-    difficulty,
-    className,
-}: {
+                                duration,
+                                difficulty,
+                                className,
+                            }: {
     duration?: string;
     difficulty?: string;
+    className?: string;
 }) => {
     return (
         <div className={`${className} flex justify-around w-full`}>
             {duration && (
                 <div className="flex items-center h-fit">
-                    <UilClock size="1rem" className="text-white m-1" />
+                    <UilClock size="1rem" className="text-white m-1"/>
                     <div className="text-white flex text-md m-1">{`${duration}`}</div>
                 </div>
             )}
@@ -150,12 +152,12 @@ const DurationDifficulty = ({
     );
 };
 
-const Stars = ({ rating }) => {
-    const genstars = (rating) => {
+const Stars = ({rating}: { rating: number; }) => {
+    const genstars = (rating: number) => {
         let stars = [];
         for (let i = 0; i < 5; i++) {
             if (i < Math.floor(rating)) {
-                stars.push(<UilStar key={i} />);
+                stars.push(<UilStar key={i}/>);
             }
         }
         return stars;
@@ -167,22 +169,31 @@ const Stars = ({ rating }) => {
     );
 };
 
-const ReciepHeader = ({
-    title,
-    image,
-    description,
-    duration,
-    difficulty,
-    rating,
-    style,
-    className,
+const RecipeHeader = ({
+                          title,
+                          image,
+                          description,
+                          duration,
+                          difficulty,
+                          rating,
+                          style,
+                          className,
+                      }: {
+    title: string;
+    image: string;
+    description: string;
+    duration: string;
+    difficulty: string;
+    rating: number;
+    className: string;
 }) => {
     return (
         <div
-            className={`relative w-full h-full ${className}`}
-            style={{ ...style }}
+            className={`relative w-full h-96 ${className}`}
+            style={{...style}}
         >
-            <div className="relative top-10 left-10 w-40vh max-h-30vh bg-black opacity-80 z-10 rounded-xl text-white p-8 flex flex-wrap flex-col">
+            <div
+                className="relative top-10 left-10 w-1/3 max-h-1/3 bg-black opacity-80 z-10 rounded-xl text-white p-8 flex flex-wrap flex-col">
                 <DurationDifficulty
                     duration={duration}
                     difficulty={difficulty}
@@ -192,7 +203,7 @@ const ReciepHeader = ({
                     {title}
                 </div>
                 <div className="text-white text-sm w-full flex pb-2">
-                    <Stars rating={rating} />
+                    <Stars rating={rating}/>
                     <div className="text-white">{rating}</div>
                 </div>
                 <div className="text-white text-lg">{description}</div>
@@ -207,52 +218,58 @@ const ReciepHeader = ({
     );
 };
 
-const RecipePage = ({ recipe }: { recipe: Recipe }) => {
-    const [servings, setServings] = useState(recipe.servings);
+const Ingredients = ({recipe, servings}: { recipe: Recipe; servings: number }) => {
+    return (
+        <div className="bg-gray-200 px-4 py-6 rounded-md" style={{gridArea: "leftPanel"}}>
+            <div className="flex gap-x-2">
+                <p>Servings: </p>
+                <input type="number"
+                       className="w-full border-black border-solid border-2 rounded-md overflow-hidden appearance-none"
+                       value={servings}/>
+            </div>
+            <h2 className="text-3xl">Ingredients: </h2>
+            <ul>
+                {recipe.ingredients.map((ingredient, index) => {
+                    return (
+                        <Ingredient
+                            key={ingredient}
+                            ingredient={ingredient}
+                            index={index}
+                        />
+                    );
+                })}
+            </ul>
+        </div>
+    )
+}
+
+const RecipePage = ({recipe}: { recipe: Recipe }) => {
+    const [servings, setServings] = useState(recipe.servings || 1);
     return (
         <div
-            className="w-full mx-auto grid min-h-screen"
-            style={{
-                gridTemplateAreas: `
-                "header header header header header header header header header header header header"
-                ". leftPanel leftPanel . mainBody mainBody mainBody mainBody mainBody mainBody mainBody ."  
-        `,
-            }}
+            className="w-full mx-auto min-h-screen"
         >
-            <ReciepHeader
+            <RecipeHeader
                 image={recipe.image}
                 title={recipe.title}
                 description={recipe.description}
                 duration={recipe.prepTime}
                 difficulty={recipe.difficulty}
                 rating={5}
-                style={{ gridArea: "header" }}
+                style={{gridArea: "header"}}
             />
-
-            <div className="bg-gray-200" style={{ gridArea: "leftPanel" }}>
-                <input type="number" className="w-full" value={servings} />
-                <h2 className="text-3xl ml-4">Ingredients: </h2>
-                <ul>
-                    {recipe.ingredients.map((ingredient, index) => {
-                        return (
-                            <Ingredient
-                                key={ingredient}
-                                ingredient={ingredient}
-                                index={index}
-                            />
-                        );
-                    })}
-                </ul>
-            </div>
-            <div style={{ gridArea: "mainBody" }}>
-                <h2 className="text-3xl">Directions: </h2>
-                <ol>
-                    {recipe.directions.map((direction, index) => {
-                        return (
-                            <Direction key={direction} direction={direction} index={index} />
-                        );
-                    })}
-                </ol>
+            <div className="flex px-12 pt-8">
+                <Ingredients recipe={recipe} servings={servings}/>
+                <div className="pl-10">
+                    <h2 className="text-3xl">Directions: </h2>
+                    <ol>
+                        {recipe.directions.map((direction, index) => {
+                            return (
+                                <Direction key={direction} direction={direction} index={index}/>
+                            );
+                        })}
+                    </ol>
+                </div>
             </div>
         </div>
     );
