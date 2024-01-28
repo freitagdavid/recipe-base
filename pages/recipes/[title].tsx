@@ -2,10 +2,12 @@ import {Recipe} from "@/pages/Home";
 import "../../app/globals.css";
 import Image from "next/image";
 // @ts-ignore
-import {UilClock, UilStar} from "@iconscout/react-unicons";
-// @ts-ignore
 import markdownJson from "markdown-json";
-import {useState} from "react";
+import React, {useState} from "react";
+import {CiClock1, CiStar} from "react-icons/ci";
+import Circle from "@/components/ui/circle";
+import { cn } from "@/lib/utils"
+import {Separator} from "@/components/ui/separator";
 
 export const getStaticProps = async (props: { params: { title: string } }) => {
     const files = await markdownJson({
@@ -104,7 +106,7 @@ export const getStaticPaths = async () => {
     };
 };
 
-const Ingredient = ({key, ingredient, index}: { key: string; ingredient: string; index: number; }) => {
+const Ingredient = ({ingredient, index}: { key: string; ingredient: string; index: number; }) => {
     return (
         <div className="flex border boder-black border-solid">
             <input type="checkbox" className="ml-8 mr-1"/>
@@ -113,15 +115,18 @@ const Ingredient = ({key, ingredient, index}: { key: string; ingredient: string;
     );
 };
 
-const Direction = ({key, direction, index}: { key: string; direction: string; index: number; }) => {
+const Direction = ({direction, index}: { direction: string; index: number; }) => {
     return (
-        <li className="pl-2 py-2 flex align-middle h-16">
-            <div className="h-full flex flex-col justify-center pr-3">
-                <div
-                    className='mr-2 bg-slate-600 p-2 text-white rounded-full w-8 h-8 flex flex-col justify-center text-center'>{index + 1}</div>
-            </div>
-            <div className="h-full flex flex-col justify-center">
-                {direction}
+        <li className={cn("flex flex-col")}>
+        {/*<li className={cn("pl-2 flex align-middle h-16 items-center")}>*/}
+            {index === 0 ? null : <Separator />}
+            <div className="flex align-middle h-16 items-center">
+                <Circle className="">
+                    <p className="text-foreground">{index + 1}</p>
+                </Circle>
+                <p className={cn("h-full flex flex-col justify-center ml-3 text-foreground")}>
+                    {direction}
+                </p>
             </div>
         </li>
     );
@@ -140,7 +145,7 @@ const DurationDifficulty = ({
         <div className={`${className} flex justify-around w-full`}>
             {duration && (
                 <div className="flex items-center h-fit">
-                    <UilClock size="1rem" className="text-white m-1"/>
+                    <CiClock1 size="1rem" className="text-white m1"/>
                     <div className="text-white flex text-md m-1">{`${duration}`}</div>
                 </div>
             )}
@@ -152,12 +157,12 @@ const DurationDifficulty = ({
     );
 };
 
-const Stars = ({rating}: { rating: number; }) => {
-    const genstars = (rating: number) => {
+const Stars = ({rating}: { rating?: number; }) => {
+    const genstars = (rating?: number) => {
         let stars = [];
-        for (let i = 0; i < 5; i++) {
-            if (i < Math.floor(rating)) {
-                stars.push(<UilStar key={i}/>);
+        for (let i: number = 0; i < 5; i++) {
+            if (i < Math.floor(rating || 0)) {
+                stars.push(<CiStar key={i}/>);
             }
         }
         return stars;
@@ -182,10 +187,11 @@ const RecipeHeader = ({
     title: string;
     image: string;
     description: string;
-    duration: string;
-    difficulty: string;
-    rating: number;
-    className: string;
+    duration?: string;
+    difficulty?: string;
+    rating?: number;
+    className?: string;
+    style: React.CSSProperties;
 }) => {
     return (
         <div

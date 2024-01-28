@@ -1,0 +1,13 @@
+[project]
+name = "recipe-base"
+version = "0.1.0"
+description = "Add a short description here"
+authors = ["David Freitag <freitagdavid@outlook.com>"]
+channels = ["conda-forge"]
+platforms = ["win-64"]
+
+[tasks]
+
+[dependencies]
+nodejs = ">=20.9.0,<20.10"
+pnpm = ">=8.14.3,<8.15"
