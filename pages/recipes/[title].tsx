@@ -1,4 +1,4 @@
-import {Recipe} from "@/pages/Home";
+import {Recipe} from "../Home";
 import "../../app/globals.css";
 import Image from "next/image";
 // @ts-ignore
@@ -8,6 +8,10 @@ import {CiClock1, CiStar} from "react-icons/ci";
 import Circle from "@/components/ui/circle";
 import { cn } from "@/lib/utils"
 import {Separator} from "@/components/ui/separator";
+import {Card} from "@/components/ui/card";
+import {Checkbox} from "@/components/ui/checkbox";
+import {Label} from "@/components/ui/label";
+import {Input} from "@/components/ui/input";
 
 export const getStaticProps = async (props: { params: { title: string } }) => {
     const files = await markdownJson({
@@ -108,9 +112,9 @@ export const getStaticPaths = async () => {
 
 const Ingredient = ({ingredient, index}: { key: string; ingredient: string; index: number; }) => {
     return (
-        <div className="flex border boder-black border-solid">
-            <input type="checkbox" className="ml-8 mr-1"/>
-            <li>{ingredient}</li>
+        <div className="flex items-center space-x-2">
+            <Checkbox id={ingredient}/>
+            <Label htmlFor={ingredient} className="text-lg text-foreground">{ingredient}</Label>
         </div>
     );
 };
@@ -118,7 +122,7 @@ const Ingredient = ({ingredient, index}: { key: string; ingredient: string; inde
 const Direction = ({direction, index}: { direction: string; index: number; }) => {
     return (
         <li className={cn("flex flex-col")}>
-        {/*<li className={cn("pl-2 flex align-middle h-16 items-center")}>*/}
+            {/*<li className={cn("pl-2 flex align-middle h-16 items-center")}>*/}
             {index === 0 ? null : <Separator />}
             <div className="flex align-middle h-16 items-center">
                 <Circle className="">
@@ -195,25 +199,28 @@ const RecipeHeader = ({
 }) => {
     return (
         <div
-            className={`relative w-full h-96 ${className}`}
+            className={`relative w-full h-128 flex items-center justify-center ${className}`}
             style={{...style}}
         >
-            <div
-                className="relative top-10 left-10 w-1/3 max-h-1/3 bg-black opacity-80 z-10 rounded-xl text-white p-8 flex flex-wrap flex-col">
-                <DurationDifficulty
-                    duration={duration}
-                    difficulty={difficulty}
-                    className="pb-2"
-                />
-                <div className="text-white text-2xl font-bold pb-2">
-                    {title}
+            <div className="z-10 w-4/5">
+                <div
+                    className="w-1/3 h-3/4 bg-black opacity-80 z-10 rounded-xl text-white p-8 flex flex-wrap flex-col flex-nowrap overflow-hidden min-h-80">
+                    <DurationDifficulty
+                        duration={duration}
+                        difficulty={difficulty}
+                        className="pb-2"
+                    />
+                    <div className="text-white text-2xl font-bold pb-2">
+                        {title}
+                    </div>
+                    <div className="text-white text-sm w-full flex pb-2">
+                        <Stars rating={rating}/>
+                        <div className="text-white">{rating}</div>
+                    </div>
+                    <div className="text-white text-lg">{description}</div>
                 </div>
-                <div className="text-white text-sm w-full flex pb-2">
-                    <Stars rating={rating}/>
-                    <div className="text-white">{rating}</div>
-                </div>
-                <div className="text-white text-lg">{description}</div>
             </div>
+
             <Image
                 src={`/images/${image}`}
                 alt={title}
@@ -226,26 +233,26 @@ const RecipeHeader = ({
 
 const Ingredients = ({recipe, servings}: { recipe: Recipe; servings: number }) => {
     return (
-        <div className="bg-gray-200 px-4 py-6 rounded-md" style={{gridArea: "leftPanel"}}>
-            <div className="flex gap-x-2">
-                <p>Servings: </p>
-                <input type="number"
-                       className="w-full border-black border-solid border-2 rounded-md overflow-hidden appearance-none"
-                       value={servings}/>
-            </div>
-            <h2 className="text-3xl">Ingredients: </h2>
-            <ul>
-                {recipe.ingredients.map((ingredient, index) => {
-                    return (
-                        <Ingredient
-                            key={ingredient}
-                            ingredient={ingredient}
-                            index={index}
-                        />
-                    );
-                })}
-            </ul>
-        </div>
+
+            <Card className='px-4 py-4 bg-accent'>
+                <div className="flex gap-x-2 items-center">
+                    <p>Servings: </p>
+                    <Input type="number" placeholder="1"></Input>
+                </div>
+                <h2 className="text-3xl">Ingredients: </h2>
+                <ul>
+                    {recipe.ingredients.map((ingredient, index) => {
+                        return (
+                            <Ingredient
+                                key={ingredient}
+                                ingredient={ingredient}
+                                index={index}
+                            />
+                        );
+                    })}
+                </ul>
+            </Card>
+
     )
 }
 
@@ -253,7 +260,7 @@ const RecipePage = ({recipe}: { recipe: Recipe }) => {
     const [servings, setServings] = useState(recipe.servings || 1);
     return (
         <div
-            className="w-full mx-auto min-h-screen"
+            className="w-full mx-auto min-h-screen flex flex-col items-center"
         >
             <RecipeHeader
                 image={recipe.image}
@@ -264,9 +271,9 @@ const RecipePage = ({recipe}: { recipe: Recipe }) => {
                 rating={5}
                 style={{gridArea: "header"}}
             />
-            <div className="flex px-12 pt-8">
+            <div className="flex pt-16 w-4/5">
                 <Ingredients recipe={recipe} servings={servings}/>
-                <div className="pl-10">
+                <div className="pl-12 border-solid flex-grow">
                     <h2 className="text-3xl">Directions: </h2>
                     <ol>
                         {recipe.directions.map((direction, index) => {
