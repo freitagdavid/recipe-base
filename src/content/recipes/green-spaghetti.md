@@ -1,8 +1,8 @@
 ---
 
-layout: recipe
+
 title:  "Green Spaghetti"
-image: green-spaghetti.jpg
+image: ../images/green-spaghetti.jpg
 tags: mains, pasta, veg
 
 ingredients:

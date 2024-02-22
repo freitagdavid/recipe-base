@@ -1,8 +1,8 @@
 ---
 
-layout: recipe
+
 title:  "Smashed Carrots"
-image: smashed-carrots.jpg
+image: ../images/smashed-carrots.jpg
 tags: sides, vegetables
 
 ingredients:

@@ -1,5 +1,5 @@
 ---
-layout: post
+
 title:  "Hot stuff! New /beta now cookin..."
 author: clarklab
 ---

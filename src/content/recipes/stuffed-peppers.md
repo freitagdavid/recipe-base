@@ -1,8 +1,8 @@
 ---
 
-layout: recipe
+
 title:  "Stuffed Peppers"
-image: stuffed-peppers.jpg
+image: ../images/stuffed-peppers.jpg
 tags: side, party
 
 ingredients:

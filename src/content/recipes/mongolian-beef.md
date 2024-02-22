@@ -1,8 +1,8 @@
 ---
 
-layout: recipe
+
 title:  "Mongolian Beef"
-image: mongolian-beef.jpg
+image: ../images/mongolian-beef.jpg
 imagecredit: https://flic.kr/p/8ANQTc
 tags: mains, meat
 

@@ -1,8 +1,8 @@
 ---
 
-layout: recipe
+
 title:  "Green Chile Stew"
-image: green-chile-stew.jpg
+image: ../images/green-chile-stew.jpg
 imagecredit: https://flic.kr/p/4CJb65
 tags: sides, soups
 

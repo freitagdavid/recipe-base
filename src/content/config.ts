@@ -5,7 +5,7 @@ const blog = defineCollection({
 
 	// Type-check frontmatter using a schema
 	schema: z.object({
-		layout: z.string(),
+
 		title: z.string(),
 		author: z.string(),
 	}),
@@ -13,14 +13,14 @@ const blog = defineCollection({
 
 const recipes = defineCollection({
 	type: 'content',
-	schema: z.object({
-		layout: z.string(),
+	schema: ({ image, }) => z.object({
 		title: z.string(),
-		image: z.string(),
-		imagecredit: z.string(),
-		// tags: z.string(),
-		// ingredients: z.array(z.string()),
-		// directions: z.array(z.string())
+		image: image(),
+		imagecredit: z.string().optional(),
+		tags: z.string().transform((val) => val.split(',')).optional(),
+		ingredients: z.array(z.string()).optional(),
+		components: z.array(z.string()).optional(),
+		directions: z.array(z.string())
 	})
 })
 

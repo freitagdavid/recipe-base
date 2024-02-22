@@ -1,8 +1,8 @@
 ---
 
-layout: recipe
+
 title:  "New York Strip"
-image: new-york-strip.jpg
+image: ../images/new-york-strip.jpg
 tags: mains, meat
 
 ingredients:

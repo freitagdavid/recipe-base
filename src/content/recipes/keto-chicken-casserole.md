@@ -1,7 +1,7 @@
 ---
-layout: recipe
+
 title: "Keto Chicken Casserole"
-image: keto-chicken-casserole.avif
+image: ../images/keto-chicken-casserole.avif
 servings: 6
 prepTime: 45m
 difficulty: "Medium"

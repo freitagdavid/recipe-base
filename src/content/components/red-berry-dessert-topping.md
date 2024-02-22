@@ -1,6 +1,6 @@
 ---
 
-layout: recipe
+
 title:  "Red Berry Dessert Topping"
 image: red-berry-topping.jpg
 imagecredit: https://flic.kr/p/9kczzP

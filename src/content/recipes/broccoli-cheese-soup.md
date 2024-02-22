@@ -1,8 +1,8 @@
 ---
 
-layout: recipe
+
 title:  "Broccoli Beer Cheese Soup"
-image: broccoli-beer-cheese-soup.jpg
+image: ../images/broccoli-beer-cheese-soup.jpg
 tags: sides, soups
 servings: 4
 

@@ -1,8 +1,8 @@
 ---
 
-layout: recipe
+
 title:  "Pork Steaks"
-image: pork-steaks.jpg
+image: ../images/pork-steaks.jpg
 tags: mains, meat
 
 ingredients:

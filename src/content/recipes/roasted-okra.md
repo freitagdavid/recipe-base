@@ -1,8 +1,8 @@
 ---
 
-layout: recipe
+
 title: "Roasted Okra"
-image: roasted-okra.jpg
+image: ../images/roasted-okra.jpg
 tags: sides, vegetables
 
 ingredients:

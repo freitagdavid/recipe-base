@@ -1,8 +1,8 @@
 ---
 
-layout: recipe
+
 title: "Falafel-Hummus Plate"
-image: falafel-hummus-plate.jpg
+image: ../images/falafel-hummus-plate.jpg
 tags: vegetarian, fast, chickpeas
 
 ingredients:
