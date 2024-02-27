@@ -4,7 +4,8 @@
         "strictNullChecks": true,
         "baseUrl": ".",
         "paths": {
-            "post": ["./src/layouts/BlogPost.astro"]
+            "post": ["./src/layouts/BlogPost.astro"],
+            "@Components": ["./src/components"]
         }
     }
 }
