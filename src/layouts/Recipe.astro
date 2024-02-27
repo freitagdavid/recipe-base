@@ -1,0 +1,73 @@
+---
+import type { CollectionEntry } from "astro:content";
+// import BaseHead from "../components/BaseHead.astro";
+// import Header from "../components/Header.astro";
+import { Image } from "astro:assets";
+import "../styles/tailwindcss.css";
+import BaseLayout from "./BaseLayout.astro";
+import Button from "../components/Button.astro";
+// import FormattedDate from '../components/FormattedDate.astro';
+
+type Props = CollectionEntry<"recipes">["data"];
+
+const { title, image, imagecredit, tags, ingredients, components, directions } =
+    Astro.props;
+console.log(Astro.props);
+---
+
+<BaseLayout title={title} description="Recipe">
+    <main>
+        <article>
+            <div class="prose">
+                <div class="w-full h-[50vh] relative">
+                    <Image
+                        src={image}
+                        alt={`Image of ${title}`}
+                        class="object-cover w-full h-full overflow-hidden"
+                        width={image.width}
+                        height={image.height}
+                    />
+                    <div
+                        class="w-96 h-128 absolute top-10 left-10 bg-transparent rounded-lg p-4"
+                    >
+                        <h1 class="text-3xl">{title}</h1>
+                        <slot />
+                    </div>
+                    <Button
+                        className="absolute right-5 bottom-5"
+                        text="Image Source"
+                        href={imagecredit}
+                    />
+                </div>
+                <div class="title">
+                    <p>{imagecredit}</p>
+                    <ul>
+                        {
+                            tags &&
+                                tags.map((tag) => {
+                                    return <li>{tag}</li>;
+                                })
+                        }
+                    </ul>
+                    <ol>
+                        {
+                            ingredients &&
+                                ingredients.map((ingredient) => {
+                                    return <li>{ingredient}</li>;
+                                })
+                        }
+                    </ol>
+                    <ol>
+                        {
+                            directions.map((direction) => {
+                                return <li>{direction}</li>;
+                            })
+                        }
+                    </ol>
+                    <hr />
+                </div>
+                <!-- <slot /> -->
+            </div>
+        </article>
+    </main>
+</BaseLayout>

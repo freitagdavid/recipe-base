@@ -1,0 +1,9 @@
+---
+const { className, text, href } = Astro.props;
+---
+
+<a href={href}>
+    <div class={`${className} p-3 bg-transparent rounded-xl`}>
+        <p>{text}</p>
+    </div>
+</a>
