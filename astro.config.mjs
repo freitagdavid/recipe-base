@@ -6,10 +6,12 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
-  integrations: [mdx(), sitemap(), tailwind()],
-  vite: {},
-  markdown: {
-    shikiConfig: {}
-  }
+	site: 'https://example.com',
+	integrations: [mdx(), sitemap(), tailwind({ applyBaseStyles: false })],
+	prefetch: true,
+	vite: {},
+	markdown: {
+		shikiConfig: {}
+	},
+
 });
