@@ -49,7 +49,7 @@ export const RestrictedDiet = z.enum([
 export const Recipe = z.object({
     cookTime: z.number().optional(), // TODO
     cookingMethod: z.string().optional(), // TODO
-    nutrition: NutritionInformation,
+    nutrition: z.optional(NutritionInformation),
     recipeCategory: z.string().optional(), // TODO: Should be array I believe
     recipeCuisine: z.string().optional(), // TODO: Should be array
     recipeIngredient: z.string().optional(), // TODO: Unsure how this is used. I think it's for single ingredient recipes which is weird.
