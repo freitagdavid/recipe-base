@@ -20,7 +20,15 @@ const recipes = defineCollection({
 		tags: z.string().transform((val) => val.split(',')).optional(),
 		ingredients: z.array(z.string()).optional(),
 		components: z.array(z.string()).optional(),
-		directions: z.array(z.string())
+		directions: z.array(z.string()),
+		layout: z.string().transform(() => '')
+	})
+})
+
+const recipesJson = defineCollection({
+	type: 'content',
+	schema: ({ image }) => z.object({
+
 	})
 })
 
