@@ -1,8 +1,8 @@
 ---
 
-
+layout: recipe
 title:  "Cauliflower Cacciatore"
-image: ../images/cauliflower-cacciatore.jpg
+image: cauliflower-cacciatore.jpg
 tags: mains, veg
 
 ingredients:

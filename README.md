@@ -1,10 +1,36 @@
-# Astro Starter Kit: Blog
+# Recipe Base
 
+> Setup & Install
 ```sh
-npm create astro@latest -- --template blog
+npm i
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
+> Dev
+```sh
+npm run dev
+```
+
+> Migrate chowdown recipes
+```sh
+npm run 
+```
+
+## Project Structure
+```text
+|--src/
+|  |--content
+|     |--recipes/
+|     # This is where you place your recipes
+|     |--components/
+|     # Components of recipes can be placed here and referenced from within full recipes
+|     |--images
+|     # This is where images of your recipes, or components go. Needs to have the same name as it's associated md file
+|     |--blog
+|     # Blog posts go in here
+```
+
+
+<!-- [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
 [![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
 
@@ -65,4 +91,4 @@ Check out [our documentation](https://docs.astro.build) or jump into our [Discor
 
 ## Credit
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/). -->

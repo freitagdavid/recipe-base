@@ -1,8 +1,8 @@
 ---
 
-
+layout: recipe
 title: "Sweet potato cakes with poached eggs"
-image: ../images/sweet-potato-cakes-with-poached-eggs.jpg
+image: sweet-potato-cakes-with-poached-eggs.jpg
 tags: fancy, vegetarian
 
 ingredients:

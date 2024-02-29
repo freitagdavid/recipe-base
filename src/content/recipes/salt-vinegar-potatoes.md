@@ -1,8 +1,8 @@
 ---
 
-
+layout: recipe
 title:  "Salt & Vinegar Potatoes"
-image: ../images/salt-vinegar-potatoes.jpg
+image: salt-vinegar-potatoes.jpg
 imagecredit: https://www.nigella.com/recipes/salt-and-vinegar-potatoes
 tags: sides, veg
 

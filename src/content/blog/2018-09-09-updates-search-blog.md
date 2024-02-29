@@ -1,5 +1,5 @@
 ---
-
+layout: post
 title:  "HTTPS, Live Search, and a new blog"
 author: clarklab
 ---

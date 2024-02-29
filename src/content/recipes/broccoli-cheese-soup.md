@@ -1,10 +1,9 @@
 ---
 
-
+layout: recipe
 title:  "Broccoli Beer Cheese Soup"
-image: ../images/broccoli-beer-cheese-soup.jpg
+image: broccoli-beer-cheese-soup.jpg
 tags: sides, soups
-servings: 4
 
 ingredients:
 - 4 tablespoons butter

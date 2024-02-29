@@ -1,8 +1,8 @@
 ---
 
-
+layout: recipe
 title:  "Crispy Carrots"
-image: ../images/crispy-carrots.jpg
+image: crispy-carrots.jpg
 tags: veg, party
 
 ingredients:

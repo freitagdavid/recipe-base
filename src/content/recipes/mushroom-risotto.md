@@ -1,8 +1,8 @@
 ---
 
-
+layout: recipe
 title:  "Mushroom Risotto"
-image: ../images/mushroom-risotto.jpg
+image: mushroom-risotto.jpg
 tags: mains, veg
 
 ingredients:

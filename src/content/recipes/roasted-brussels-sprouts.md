@@ -1,8 +1,8 @@
 ---
 
-
+layout: recipe
 title:  "Roasted Brussels Sprouts"
-image: ../images/roasted-brussels-sprouts.jpg
+image: roasted-brussels-sprouts.jpg
 tags: sides, vegetables
 
 ingredients:

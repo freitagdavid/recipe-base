@@ -1,8 +1,8 @@
 ---
 
-
+layout: recipe
 title:  "Downtown Marinade"
-image: ../images/downtown-marinade.jpg
+image: downtown-marinade.jpg
 tags: party, meat
 
 ingredients:

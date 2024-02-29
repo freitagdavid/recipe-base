@@ -1,6 +1,6 @@
 ---
 
-
+layout: recipe
 title:  "Graham Cracker Crust"
 image: graham-cracker-crust.jpg
 imagecredit: https://flic.kr/p/atxu75

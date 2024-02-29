@@ -1,8 +1,8 @@
 ---
 
-
+layout: recipe
 title:  "Nilla Wafer French Toast"
-image: ../images/nilla-wafer.jpg
+image: nilla-wafer.jpg
 tags: breakfast, baking
 
 ingredients:

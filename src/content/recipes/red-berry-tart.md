@@ -1,8 +1,8 @@
 ---
 
-
+layout: recipe
 title:  "Red Berry Tart"
-image: ../images/red-berry-tart.jpg
+image: red-berry-tart.jpg
 tags: desserts
 
 directions:

@@ -1,6 +1,6 @@
 ---
 
-
+layout: recipe
 title:  "Vanilla Custard Filling"
 image: vanilla-custard.jpg
 imagecredit: https://flic.kr/p/99yJqV

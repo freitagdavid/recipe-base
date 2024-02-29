@@ -1,8 +1,8 @@
 ---
 
-
+layout: recipe
 title:  "Mississippi Pot Roast"
-image: ../images/mississippi-pot-roast.jpg
+image: mississippi-pot-roast.jpg
 imagecredit: https://www.today.com/today/amp/tdna199419
 tags: mains, crock pot
 

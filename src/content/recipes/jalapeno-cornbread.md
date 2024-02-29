@@ -1,8 +1,8 @@
 ---
 
-
+layout: recipe
 title:  "Jalapeno Cornbread"
-image: ../images/jalapeno-cornbread.jpg
+image: jalapeno-cornbread.jpg
 tags: sides, bread, spicy
 
 ingredients:

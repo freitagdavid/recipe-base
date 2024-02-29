@@ -1,8 +1,8 @@
 ---
 
-
+layout: recipe
 title:  "One Minute Muffin"
-image: ../images/one-minute-muffin.jpg
+image: one-minute-muffin.jpg
 imagecredit: http://divaliciousrecipes.com/2012/04/26/flax-muffin-in-a-mug-in-a-minute-low-carb-and-gluten-free/
 tags: breakfast
 
