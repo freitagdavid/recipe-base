@@ -1,41 +1,16 @@
 import replace from 'replace-in-file';
 
 
-
-
-function migrateImage() {
-
+function migrateFile(glob, from, to) {
     const options = {
 
         files: [
-            './src/content/recipes/*.md'
+            glob
         ],
 
         //Replacement to make (string or regex) 
-        from: /image:\s/g,
-        to: 'image: ../images/',
-    };
-
-    try {
-        let changedFiles = replace.sync(options);
-        console.log('Modified files:', changedFiles.join(', '));
-    }
-    catch (error) {
-        console.error('Error occurred:', error);
-    }
-
-}
-
-function migrateRemoveLayout() {
-    const options = {
-
-        files: [
-            './src/content/**/*.md'
-        ],
-
-        //Replacement to make (string or regex) 
-        from: /layout:.*/g,
-        to: '',
+        from: from,
+        to: to,
     };
 
     try {
@@ -47,4 +22,7 @@ function migrateRemoveLayout() {
     }
 }
 
-migrateRemoveLayout()
+function runMigrations() {
+    migrateFiles('./src/content/recipes/*.md', /image:\s/g, 'image: ../images/'); // Fix image paths;
+    migrateFiles('./src/content/**/*.md', /layout:.*/g, ''); // Remove layout frontmatter;
+}
